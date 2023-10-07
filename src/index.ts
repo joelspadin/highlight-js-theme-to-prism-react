@@ -5,6 +5,8 @@ import * as path from 'path';
 import * as prettier from 'prettier';
 import { PrismThemeStringifier } from './PrismThemeStringifier';
 
+const SOURCE_URL = 'https://github.com/highlightjs/highlight.js/blob/main/src/styles/';
+
 const licensePath = path.resolve(__dirname, '../highlight.js/LICENSE');
 const sourceDir = path.resolve(__dirname, '../highlight.js/src/styles');
 const destDir = path.resolve(__dirname, '../themes');
@@ -22,7 +24,7 @@ async function convertTheme(source: string, license: string) {
     const dest = changeExtension(path.join(destDir, name), '.js');
 
     const css = await fs.readFile(source, 'utf-8');
-    const stringifier = new PrismThemeStringifier(name, license);
+    const stringifier = new PrismThemeStringifier(SOURCE_URL + name, license);
 
     const result = await postcss().process(css, { from: source, to: dest, stringifier: stringifier.stringifier });
     const theme = await prettier.format(result.css, { parser: 'typescript' });

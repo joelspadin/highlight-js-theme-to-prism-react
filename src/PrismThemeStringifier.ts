@@ -1,10 +1,8 @@
-import { AtRule, type AnyNode, type Root, type Rule, type Stringifier } from 'postcss';
-
-const BASE_URL = 'https://github.com/highlightjs/highlight.js/blob/main/src/styles';
+import { AtRule, type AnyNode, type Rule, type Stringifier } from 'postcss';
 
 export class PrismThemeStringifier {
     constructor(
-        private path: string,
+        private sourceUrl: string,
         private license: string,
     ) {}
 
@@ -12,7 +10,7 @@ export class PrismThemeStringifier {
         const theme = getTheme(root);
 
         builder('/*\n');
-        builder(`  Converted from ${BASE_URL}/${this.path}\n\n`);
+        builder(`  Converted from ${this.sourceUrl}\n\n`);
         builder(indent(this.license.trim(), '  '));
         builder('\n');
         builder('*/\n\n');
