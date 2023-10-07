@@ -1,0 +1,23 @@
+{
+  "name": "highlightjs-to-prismjs-react",
+  "version": "1.0.0",
+  "description": "Convert highlight.js themes to prism-react-renderer themes",
+  "main": "out/index.js",
+  "scripts": {
+    "start": "node out/index.js",
+    "compile": "tsc",
+    "watch": "tsc --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joel Spadin <joelspadin@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.18.4",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "glob": "^10.3.10",
+    "postcss": "^8.4.31",
+    "prettier": "^3.0.3"
+  }
+}
